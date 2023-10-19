@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
-import { Button, Card, FormControl, InputGroup, Navbar } from 'react-bootstrap';
+import { Button, Card, Form, FormControl, InputGroup, Navbar } from 'react-bootstrap';
 import { MainContext } from '../context/MainContext';
 import * as I from 'react-feather';
 import Helmet from 'react-helmet';
@@ -119,6 +119,25 @@ export default class BasePage extends Component<any, any> {
         me.setState({
             showMore: true
         })
+    }
+    
+    private handleSubmit(event) {
+        let me = this;
+
+        event.preventDefault();
+      
+        const myForm = event.target;
+        const formData = new FormData(myForm) as any;
+      
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString(),
+        }).then(() => {
+            me.setState({
+                messageSent: true
+            })
+        }).catch((error) => alert(error));
     }
 
     render (){
@@ -314,8 +333,40 @@ export default class BasePage extends Component<any, any> {
                                 No olvides dejar tu nombre para poner los créditos.
                                 <br/>
                                 <br/>*/}
-                                <h2 className="color-4">¿Necesitas una Aplicación como ésta, o desarrollar una idea similar?</h2>
-                                <b>¡Con gusto te ayudaremos!</b> ofrecemos servicios de desarrollo de aplicaciones móviles, aplicaciones web o de escritorio. Para más información puedes contactarnos por medio del correo <b>sfstricks@hotmail.com</b>, ¡En breve te responderemos!. 
+                                {!me.state?.messageSent ?
+                                    <>
+                                        <h2 className="color-4">¿Necesitas una Aplicación como ésta, o desarrollar una idea similar?</h2>
+                                        <b>¡Con gusto te ayudaremos!</b> ofrecemos servicios de desarrollo de aplicaciones móviles, aplicaciones web o de escritorio. Para más información puedes contactarnos por medio del correo <b>sfstricks@hotmail.com</b>, ¡En breve te responderemos!. 
+                                        <hr/>
+                                        <form
+                                            data-netlify="true"
+                                            name="contact"
+                                            method="post"
+                                            onSubmit={ e => me.handleSubmit(e) }
+                                        >
+                                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                                <Form.Label>Tu correo electrónico:</Form.Label>
+                                                <Form.Control type="email" placeholder="xxxxx@example.com" />
+                                            </Form.Group>
+                                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                                                <Form.Label>Tu teléfono:</Form.Label>
+                                                <Form.Control type="phone" placeholder="xxxxxxxxxx" />
+                                            </Form.Group>
+                                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                                <Form.Label>Tu mensaje:</Form.Label>
+                                                <Form.Control as="textarea" required={true} rows={3} />
+                                            </Form.Group>
+
+                                            <Button type='submit'>Enviar formulario</Button>
+                                        </form>
+                                    </>
+                                    :
+                                    <>                                        
+                                        <h2 className="color-4">¡Muchas gracias por contactarnos!</h2>
+                                        <b>En breve nos pondremos en contacto contigo.</b>
+                                        <img className="contacto-gif" src="https://cdn.pixabay.com/animation/2023/01/31/11/06/11-06-41-160_512.gif"/>
+                                    </>
+                                }
                             </div>
                         </Card.Body>
                     </Card>
