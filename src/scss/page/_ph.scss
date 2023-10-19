@@ -1,0 +1,234 @@
+
+$purple: #932a99;
+$green: #31aa26;
+$red: #f00102;
+$blue: #0f2a8c;
+$orange: #ff9b04;
+
+$colors: $orange, $blue, $red, $green, $purple;
+$templates: 
+"/img/template1.png",
+"/img/template2.png",
+"/img/template3.png",
+"/img/template4.png",
+"/img/template5.png",
+"/img/template6.png",
+"/img/template7.png",
+"/img/template8.png",
+"/img/template9.png";
+
+@font-face {
+    font-family: 'objectivity-black';
+    src: url('/fonts/objectivity-black.otf') format("opentype");
+}
+
+@for $i from 1 through length($colors) {
+    $c: nth($colors, $i);
+
+    .color-#{$i} {
+        color: $c;
+    }
+}
+.pacto-nombre {
+    .no-first-letter {
+        margin-left: 55px!important;
+    }
+    .first-letter {
+        margin-left: 2px!important;
+    }
+    span {
+        margin-top: 290px;
+        font-size: 100px;
+        opacity: 0.78;
+        padding: 0;
+        margin-left: -20px;
+        position: relative;
+        font-family: 'objectivity-black';
+    }
+}
+
+.main-title {
+    height: 120px;
+    .pacto-nombre {
+        span {
+            margin-top: 0px!important;
+        }
+    }
+}
+
+.template {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display:inline-block;
+    text-align: center;
+    background-size: cover;
+    width: 700px;
+
+    @for $i from 1 through length($templates) {
+        $c: nth($templates, $i);
+        &-#{$i} {
+            background-image: url($c);
+        }
+    }
+}
+
+.template-1{
+    height: 700px;
+}
+
+.template-2{
+    height: 700px;
+    span {
+        margin-top: 145px!important;
+    }
+}
+
+
+.pefil-foto{
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: solid $purple 1px;
+    border-radius: 700px;
+}
+
+.template-circle {
+    border-radius: 700px;
+    overflow: hidden;
+}
+
+.template-3 {
+    height: 700px;
+    padding-top: 570px;
+    padding-left: 150px;
+    text-align: left!important;
+    padding-right: 20px;
+    background-size: contain!important;
+    margin-bottom: 0px;
+    span {
+        font-weight: 400;
+        opacity: 1;
+        font-size: 40px;
+        color: $purple;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}
+
+.template-4{
+    span {
+        margin-top: 260px!important;
+    }
+    height: 700px;
+}
+
+.template-5{
+    padding-top: 600px;
+    height: 700px;
+    span {
+        margin-left: 0px;
+        font-weight: 400;
+        opacity: 1;
+        font-size: 70px;
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}
+
+.template-6{
+    height: 700px;
+}
+
+.template-7{
+    height: 700px;
+}
+
+.template-8{
+    height: 700px;
+}
+
+.template-9{
+    height: 700px;
+    span{
+        margin-top: 270px!important;
+    }
+}
+
+.letra-o {
+    background-position: center;
+    background-position-y: 25px;
+    background-repeat: no-repeat;
+    color:transparent;
+    background-size: contain;
+    background-image: url('/img/paloma.png');
+    display:inline-block;
+}
+
+.paloma {
+    background-size: cover;
+    background-image: url('/img/paloma.png');
+    height: 80px;
+    width: 80px;
+    margin-bottom: 25px;
+    display:inline-block;
+}
+
+.input-container-ph{
+    max-width: 400px;
+    margin:auto;
+    input{
+        text-align: center;
+        border: solid $purple 1px;
+        color: $purple;
+    }
+}
+
+.z-1 {
+    z-index: 1;
+}
+.z-0 {
+    z-index: 0;
+}
+
+.donaciones {
+    display: flex;
+}
+
+@media only screen and (max-width: 550px) {
+    .template {
+        transform: scale(0.8);
+    }
+    .info-text {
+        font-size: 30px;
+    }
+}
+
+.grid-title {
+    text-align: center;
+    grid-area: title;
+}
+.grid-gif {
+    grid-area: gif;
+}
+.grid-qr {
+    grid-area: qr;
+}
+  
+.donaciones {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-areas:
+    "title  title  title"
+    "gif gif qr";
+    background-color: #fff;
+    color: #444;
+    img {
+        max-height: 100px;
+        width: auto;
+    }
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+    margin: auto;
+}
