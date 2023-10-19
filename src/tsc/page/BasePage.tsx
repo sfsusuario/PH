@@ -333,11 +333,12 @@ export default class BasePage extends Component<any, any> {
                                 No olvides dejar tu nombre para poner los créditos.
                                 <br/>
                                 <br/>*/}
+                                
                                 {!me.state?.messageSent ?
                                     <>
                                         <h2 className="color-4">¿Necesitas una Aplicación como ésta, o desarrollar una idea similar?</h2>
                                         <b>¡Con gusto te ayudaremos!</b> ofrecemos servicios de desarrollo de aplicaciones móviles, aplicaciones web o de escritorio. Para más información puedes contactarnos por medio del correo <b>sfstricks@hotmail.com</b>, ¡En breve te responderemos!. 
-                                        <hr/>
+                                        {/*<hr/>
                                         <form
                                             data-netlify="true"
                                             name="contact"
@@ -358,7 +359,7 @@ export default class BasePage extends Component<any, any> {
                                                 <Form.Control as="textarea" name="message" required={true} rows={3} />
                                             </Form.Group>
                                             <Button type='submit'>Enviar formulario</Button>
-                                        </form>
+                                        </form>*/}
                                     </>
                                     :
                                     <>                                        
