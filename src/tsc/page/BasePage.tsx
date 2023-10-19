@@ -336,7 +336,7 @@ export default class BasePage extends Component<any, any> {
                                 
                                 {!me.state?.messageSent ?
                                     <>
-                                        <h2 className="color-4">¿Necesitas una Aplicación como ésta, o desarrollar una idea similar?</h2>
+                                        <h2 className="color-4">¿Necesitas una aplicación como ésta, o desarrollar una idea similar?</h2>
                                         <b>¡Con gusto te ayudaremos!</b> ofrecemos servicios de desarrollo de aplicaciones móviles, aplicaciones web o de escritorio. Para más información puedes contactarnos por medio del correo <b>sfstricks@hotmail.com</b>, ¡En breve te responderemos!. 
                                         {/*<hr/>
                                         <form
