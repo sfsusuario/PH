@@ -344,6 +344,7 @@ export default class BasePage extends Component<any, any> {
                                             method="post"
                                             onSubmit={ e => me.handleSubmit(e) }
                                         >
+                                            <input type="hidden" name="form-name" value="contact" />
                                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                                 <Form.Label>Tu correo electrónico:</Form.Label>
                                                 <Form.Control type="email" placeholder="xxxxx@example.com" />
