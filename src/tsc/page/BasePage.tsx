@@ -341,23 +341,22 @@ export default class BasePage extends Component<any, any> {
                                         <form
                                             data-netlify="true"
                                             name="contact"
-                                            method="post"
+                                            method="POST"
                                             onSubmit={ e => me.handleSubmit(e) }
                                         >
                                             <input type="hidden" name="form-name" value="contact" />
                                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                                 <Form.Label>Tu correo electrónico:</Form.Label>
-                                                <Form.Control type="email" placeholder="xxxxx@example.com" />
+                                                <Form.Control type="email" name="email" placeholder="xxxxx@example.com" />
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
                                                 <Form.Label>Tu teléfono:</Form.Label>
-                                                <Form.Control type="phone" placeholder="xxxxxxxxxx" />
+                                                <Form.Control type="phone" name="phone" placeholder="xxxxxxxxxx" />
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                                 <Form.Label>Tu mensaje:</Form.Label>
-                                                <Form.Control as="textarea" required={true} rows={3} />
+                                                <Form.Control as="textarea" name="message" required={true} rows={3} />
                                             </Form.Group>
-
                                             <Button type='submit'>Enviar formulario</Button>
                                         </form>
                                     </>
