@@ -114,6 +114,13 @@ export default class BasePage extends Component<any, any> {
         );
     }
 
+    private showMore() {
+        let me = this;
+        me.setState({
+            showMore: true
+        })
+    }
+
     render (){
         let me = this;
         return (
@@ -173,16 +180,39 @@ export default class BasePage extends Component<any, any> {
                             <I.Download/> Descargar imagen de perfil
                         </Button>
                     </div>
-                    <div ref={me.getRef("poster")}>
-                        <div className="template template-2">
-                            {me.pactoNombre()}
-                        </div>
-                    </div>
-                    <div className="text-center mb-3">
-                        <Button variant='success' onClick={e=>me.export( "poster")}>
-                            <I.Download/> Descargar poster
-                        </Button>
-                    </div>
+                    {!me.state?.showMore && 
+                        <>
+                            <div className="text-center mb-3">
+                                <Button variant='warning' onClick={e=>me.showMore()}>
+                                    <I.Eye/> Ver mas diseños
+                                </Button>
+                            </div>
+                        </>
+                    }
+                    { me.state?.showMore && 
+                        <>
+                            <div ref={me.getRef("poster")}>
+                                <div className="template template-2">
+                                    {me.pactoNombre()}
+                                </div>
+                            </div>
+                            <div className="text-center mb-3">
+                                <Button variant='success' onClick={e=>me.export( "poster")}>
+                                    <I.Download/> Descargar poster
+                                </Button>
+                            </div>
+                            <div className="template-circle" ref={me.getRef("profile8")}>
+                                <div className="template template-8">
+                                    {me.pactoNombre()}
+                                </div>
+                            </div>
+                            <div className="text-center mb-3">
+                                <Button variant='success' onClick={e=>me.export("profile8")}>
+                                    <I.Download/> Descargar imagen
+                                </Button>
+                            </div>
+                        </>
+                    }
                     {/*<div className="pefil-foto" ref={me.getRef("avatar")}>
                         <div className="template template-3">
                             <span>
@@ -241,16 +271,6 @@ export default class BasePage extends Component<any, any> {
                             <I.Download/> Descargar imagen
                         </Button>
                     </div>*/}
-                    <div className="template-circle" ref={me.getRef("profile8")}>
-                        <div className="template template-8">
-                            {me.pactoNombre()}
-                        </div>
-                    </div>
-                    <div className="text-center mb-3">
-                        <Button variant='success' onClick={e=>me.export("profile8")}>
-                            <I.Download/> Descargar imagen
-                        </Button>
-                    </div>
                     {/*<div className="template-circle" ref={me.getRef("profile9")}>
                         <div className="template template-9">
                             {me.pactoNombre()}
@@ -289,9 +309,13 @@ export default class BasePage extends Component<any, any> {
                     <Card className="mb-3">
                         <Card.Body>
                             <div className="text-center">
-                                <h1 className="color-4">¿NOS RECOMIENDAS UN DISEÑO?</h1>
+                                {/*<h1 className="color-4">¿NOS RECOMIENDAS UN DISEÑO?</h1>
                                 <b>¡Con gusto lo subiremos!</b> recibimos plantillas y sugerencias de diseño al correo <b>sfstricks@hotmail.com</b>, en breve publicaremos tu diseño. 
                                 No olvides dejar tu nombre para poner los créditos.
+                                <br/>
+                                <br/>*/}
+                                <h2 className="color-4">¿Necesitas una Aplicación como ésta, o desarrollar una idea similar?</h2>
+                                <b>¡Con gusto te ayudaremos!</b> ofrecemos servicios de desarrollo de aplicaciones móviles, aplicaciones web o de escritorio. Para más información puedes contactarnos por medio del correo <b>sfstricks@hotmail.com</b>, ¡En breve te responderemos!. 
                             </div>
                         </Card.Body>
                     </Card>
